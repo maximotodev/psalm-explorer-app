@@ -1,0 +1,4 @@
+web: gunicorn app:app
+```    *   `web:` tells Render this is a web service.
+*   `gunicorn` is the server we just installed.
+*   `app:app` means "in the file `app.py`, run the Flask instance named `app`".

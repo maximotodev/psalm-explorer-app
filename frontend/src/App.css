@@ -1,0 +1,374 @@
+/* --- Google Font Import --- */
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;700&display=swap");
+
+/* --- CSS Variables for Easy Theming --- */
+:root {
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Lora", serif;
+
+  --color-primary: #264653;
+  --color-secondary: #2a9d8f;
+  --color-accent: #e9c46a;
+  --color-warning: #f4a261;
+  --color-danger: #e76f51;
+
+  --color-bg: #f8f9fa;
+  --color-card-bg: #ffffff;
+  --color-text: #343a40;
+  --color-text-light: #6c757d;
+
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --border-radius: 8px;
+}
+
+/* --- General Reset & Body --- */
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Layout Components --- */
+.app-header {
+  background: var(--color-primary);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.app-header h1 {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+.app-header .subtitle {
+  margin: 0.5rem 0 0 0;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.app-main {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+/* --- Search Components --- */
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.search-bar {
+  display: flex;
+  flex-grow: 1;
+  max-width: 500px;
+}
+
+.search-bar input {
+  width: 100%;
+  border: 2px solid #ddd;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--color-secondary);
+  color: white;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #218a7f;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.search-bar button {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.random-button {
+  background-color: var(--color-danger);
+}
+.random-button:hover {
+  background-color: #d6604a;
+}
+
+/* --- Main Content Area --- */
+.content-area {
+  min-height: 400px;
+}
+
+/* --- Loader --- */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+}
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid var(--color-primary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+}
+.loader-container p {
+  margin-top: 1rem;
+  font-family: var(--font-heading);
+  color: var(--color-text-light);
+}
+
+/* --- Psalm Display View --- */
+.psalm-view {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.psalm-card,
+.analysis-card {
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+.psalm-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.psalm-header h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+}
+
+.psalm-content p {
+  line-height: 1.8;
+  margin: 0 0 1rem 0;
+}
+
+.psalm-content sup {
+  font-weight: bold;
+  color: var(--color-danger);
+  margin-right: 0.5rem;
+  font-size: 0.8em;
+}
+
+.similar-psalms h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+.similar-tag {
+  background-color: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-primary);
+  font-weight: normal;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+  margin-right: 0.5rem;
+}
+.similar-tag:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* --- Analysis Card --- */
+.analysis-content h3 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-top: 0;
+  text-align: center;
+}
+
+.analysis-content .sentiment,
+.analysis-content .keywords {
+  margin-bottom: 1.5rem;
+}
+
+.sentiment-label {
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.keyword-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.keyword-tag {
+  background-color: #e9ecef;
+  color: var(--color-text-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+/* --- Search Results View --- */
+.search-results-view {
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  animation: fadeIn 0.5s;
+}
+
+.search-results-view h2 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-top: 0;
+}
+
+.search-results-view ul {
+  list-style: none;
+  padding: 0;
+}
+
+.search-results-view li {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.search-results-view li:hover {
+  background-color: #f8f9fa;
+}
+
+.search-results-view li strong {
+  color: var(--color-secondary);
+}
+
+.search-results-view li p {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .psalm-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    padding: 1rem;
+  }
+  .search-container,
+  .psalm-card,
+  .analysis-card,
+  .search-results-view {
+    padding: 1rem;
+  }
+}
+
+.analysis-content .categories {
+  margin-bottom: 1.5rem;
+}
+
+.category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.category-tag {
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: var(--font-heading);
+  text-transform: capitalize;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
